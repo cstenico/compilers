@@ -1,0 +1,18 @@
+program nome1;
+{exemplo 1}
+var a, a1, b: integer;
+{exemplo 1}
+
+begin
+{to comentando igual otaria}
+{to c90 10 top}
+	read(a, b);
+	a1:= a + b;
+	while a1>a do
+		begin
+			write(a1);	
+			a1:= a1-1;
+		end;
+		if a<> b then write(a);
+	end
+end
