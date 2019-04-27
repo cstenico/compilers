@@ -61,18 +61,18 @@ void checkReservedWord(char* yytext){
 int main(){
     hashtable = ht_create( 65536 );
 
-    ht_set( hashtable, "begin", "inky" );
-    ht_set( hashtable, "end", "pinky" );
-    ht_set( hashtable, "real", "blinky" );
-    ht_set( hashtable, "integer", "floyd" );
-    ht_set( hashtable, "else", "floyd" );
-    ht_set( hashtable, "readln", "floyd" );
-    ht_set( hashtable, "repeat", "floyd" );
-    ht_set( hashtable, "until", "floyd" );
-    ht_set( hashtable, "if", "floyd" );
-    ht_set( hashtable, "then", "floyd" );
-    ht_set( hashtable, "while", "floyd" );
-    ht_set( hashtable, "do", "floyd" );
+    ht_set( hashtable, "begin", " " );
+    ht_set( hashtable, "end", " " );
+    ht_set( hashtable, "real", " " );
+    ht_set( hashtable, "integer", " " );
+    ht_set( hashtable, "else", " " );
+    ht_set( hashtable, "readln", " " );
+    ht_set( hashtable, "repeat", " " );
+    ht_set( hashtable, "until", " " );
+    ht_set( hashtable, "if", " " );
+    ht_set( hashtable, "then", " " );
+    ht_set( hashtable, "while", " " );
+    ht_set( hashtable, "do", " " );
 
     yylex();
     return 0;
