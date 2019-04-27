@@ -73,6 +73,11 @@ int main(){
     ht_set( hashtable, "then", " " );
     ht_set( hashtable, "while", " " );
     ht_set( hashtable, "do", " " );
+    ht_set( hashtable, "read", " " );
+    ht_set( hashtable, "program", " " );
+    ht_set( hashtable, "write", " " );
+    ht_set( hashtable, "procedure", " " );
+    ht_set( hashtable, "var", " " );
 
     yylex();
     return 0;
