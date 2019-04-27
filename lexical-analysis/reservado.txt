@@ -1,0 +1,14 @@
+begin
+end
+var
+real
+integer
+else
+readln
+writeln
+repeat
+until
+if
+then
+while
+do

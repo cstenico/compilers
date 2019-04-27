@@ -1,11 +1,17 @@
+%option noyywrap
+
 %{
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "hash.h"
 
-// retornar {PALAVRA COMO VARIAVEL}
-// FAZER VERIFICACAO
+void checkReservedWord(char* yytext);
+
+hashtable_t *hashtable;
+
 %}
+
 
 NUMERO [0-9]
 REAL {NUMERO}+"."{NUMERO}+
@@ -16,9 +22,9 @@ SPACE [ ]
 COMENTARIO [{].+[}]
 %%
 
-{NUMERO}+ {printf("<%d \t\t| NUM >\n",atoi(yytext));} 
+{NUMERO}+ {printf("< %d \t\t| NUM >\n",atoi(yytext));} 
 {REAL} {printf("< %f \t\t| NUM_REAL >\n",atof(yytext));}
-"=" {printf("< %s \t\t| SIMB_ASIGN >\n",yytext);}
+":=" {printf("< %s \t\t| SIMB_ASSIGN >\n",yytext);}
 ";" {printf("< %s \t\t| SIMB_PTOCOMA >\n",yytext);}
 "*" {printf("< %s \t\t| SIMB_MULT >\n",yytext);}
 "/" {printf("< %s \t\t| SIMB_DIV >\n",yytext);} 
@@ -35,7 +41,8 @@ COMENTARIO [{].+[}]
 "||" {printf("< %s \t\t| SIMB_OR >\n",yytext);}
 "cos" {printf("< %s \t\t| TKN_COS >\n",yytext);} 
 "sen" {printf("< %s \t\t| TKN_SEN >\n",yytext);}
-{PALAVRA} {printf("< %s \t\t| PALAVRA >\n",yytext);} 
+{PALAVRA} {checkReservedWord(yytext);} 
+
 {NEW_LINE} {} 
 {TAB} {} 
 {SPACE} {} 
@@ -43,10 +50,33 @@ COMENTARIO [{].+[}]
 
 %%
 
-int main()
-{
+void checkReservedWord(char* yytext){
+    if (ht_get( hashtable, yytext )){
+        printf("< %s \t\t| PALAVRA RESERVADA >\n",yytext);
+    }else{
+        printf("< %s \t\t| ID >\n",yytext);
+    }
+}
+
+int main(){
+    hashtable = ht_create( 65536 );
+
+    ht_set( hashtable, "begin", "inky" );
+    ht_set( hashtable, "end", "pinky" );
+    ht_set( hashtable, "real", "blinky" );
+    ht_set( hashtable, "integer", "floyd" );
+    ht_set( hashtable, "else", "floyd" );
+    ht_set( hashtable, "readln", "floyd" );
+    ht_set( hashtable, "repeat", "floyd" );
+    ht_set( hashtable, "until", "floyd" );
+    ht_set( hashtable, "if", "floyd" );
+    ht_set( hashtable, "then", "floyd" );
+    ht_set( hashtable, "while", "floyd" );
+    ht_set( hashtable, "do", "floyd" );
+
     yylex();
     return 0;
+
 }
 
 
