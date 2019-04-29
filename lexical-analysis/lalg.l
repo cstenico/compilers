@@ -21,9 +21,7 @@ TAB \t
 SPACE [ ]
 COMENTARIO [{].+[}]
 COMENTARIO_ABERTO "{"[^}]*
-STRING_ABERTA "\""[^\"]*
-NUM_ERRADO ([0-9]+\.[0-9]*[a-zA-Z]+([0-9]|[a-zA-Z])*|[0-9]*[a-zA-Z]+([0-9]|[a-zA-Z])*\.[0-9]*|[0-9]+[a-zA-Z]+([0-9]|[a-zA-Z])*)
-
+NUM_ERRADO ([0-9]+\.[0-9]*[a-zA-Z]+([0-9]|[a-zA-Z])*|[0-9]*[a-zA-Z]+([0-9]|[a-zA-Z])*\.[0-9]+|[0-9]+[a-zA-Z]+([0-9]|[a-zA-Z])*)
 %%
 
 {NUMERO}+ {printf("< %d \t\t| NUM >\n",atoi(yytext));} 
@@ -48,8 +46,7 @@ NUM_ERRADO ([0-9]+\.[0-9]*[a-zA-Z]+([0-9]|[a-zA-Z])*|[0-9]*[a-zA-Z]+([0-9]|[a-zA
 "sen" {printf("< %s \t\t| TKN_SEN >\n",yytext);}
 {PALAVRA} {checkReservedWord(yytext);} 
 {COMENTARIO_ABERTO} {printf("\n\n< ERRO: COMENTARIO ABERTO >\n\n");}
-{STRING_ABERTA} {printf("\n\n< ERRO: STRING ABERTA >\n\n");}
-{NUM_ERRADO} {printf("\n\n< ERRO: NUMERO MAL FORMADO >\n\n");}
+{NUM_ERRADO} {printf("\n\n< ERRO: TOKEN MAL FORMADO >\n\n");}
 
 {NEW_LINE} {} 
 {TAB} {} 

@@ -8,20 +8,12 @@ begin
 	read(a, b);
 	a1:= a + a.233;
 	while a1>a do
-    {COMENTARIO ABERTO NO LOOP fechado pra nao encerrar execucao}
+    {COMENTARIO ABERTO NO LOOP fechado pra nao encerrar execucao
 		begin
 			write(a);	
 			a1:= 1a - 1.23aaaa;
 		end;
-		if a > b then write("Hello Wrold);
+		if a > b then write "Hello Wrold ;
 	end
-end
+end.
 {COMENTARIO FECHADO}
-
-1.2222
-1.23aaaa
-1.aaa
-1.e33
-a1
-3a
-345d
